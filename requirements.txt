@@ -1,0 +1,4 @@
+pyarrow
+fsspec
+huggingface_hub
+requests
