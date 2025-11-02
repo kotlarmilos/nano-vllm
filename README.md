@@ -7,13 +7,12 @@ Components of this project are:
  - tokenizer
  - gpt
  - optimizer
- - trainer
- - inference
- - eval
  - GPUs
- - vllm
- - fine-tuning (LoRA)
+ - mixed precision training, fp16
+ - distributed optimization, DDP, ZeRO
+ - kv-cache
  - mixture of experts
- - difussion
+ - quantization
+ - VQVAE, diffusion transformer
  - interpretability
  - robotics transformer
