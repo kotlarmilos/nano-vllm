@@ -10,3 +10,10 @@ Components of this project are:
  - trainer
  - inference
  - eval
+ - GPUs
+ - vllm
+ - fine-tuning (LoRA)
+ - mixture of experts
+ - difussion
+ - interpretability
+ - robotics transformer
