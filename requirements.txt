@@ -3,3 +3,5 @@ fsspec
 huggingface_hub
 requests
 torch
+matplotlib
+numpy
