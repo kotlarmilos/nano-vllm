@@ -1,11 +1,12 @@
+from glob import glob
 import os
 import torch
 from torch import nn
 from math import sin, cos
 import torch.nn.functional as F
+import numpy as np
 
-from dataset import sample_text
-from tokenizer import encode, decode, load_tokenizer, TOKENIZER_PATH
+from data.bpe_tokenizer import encode, decode, load_shard, load_tokenizer, TOKENIZER_PATH
 
 class Transformer(nn.Module):
     def __init__(self, vocab_size, context_len = 1024, batch_size = 32, embedding_dim = 512):
@@ -65,23 +66,12 @@ class Transformer(nn.Module):
         return logits
 
 def batch_text(context_len, batch_size, merges, vocab):
-    while True:
-        batch = []
-        for _ in range(batch_size):
-            tokens = []
-            for s in sample_text():
-                if len(tokens) >= context_len:
-                    break
-                t = encode(s, merges, vocab)
-                remaining = context_len - len(tokens)
-                if len(t) <= remaining:
-                    tokens.extend(t)
-                else:
-                    tokens.extend(t[:remaining])
-                    break
-            
-            batch.append(tokens)
-        yield batch
+   tokens = np.concatenate([load_shard(f) for f in sorted(glob.glob("data/bpe-shards/*.bin"))])
+   for step in range(num_steps):
+        start = step * batch_size * context_len
+        batch = tokens[start:start + batch_size * context_len]
+        x = torch.tensor(batch.reshape(batch_size, context_len), dtype=torch.long)
+        yield x
 
 
 context_len = 64
