@@ -114,7 +114,7 @@ Final val loss **2.15**, well below the 3.0 target. Val perplexity 8.5 means the
 > The term reaction to explain in the power structure, propulation states; the movies are vital as they are completely pierarchous.
 
 **Step 9,500** (loss 2.17, coherent structure):
-> The Uncovered anthology composer "including scene bulb protection," Bryan L. Wittenskin, 240 Scientists welcomed the
+> The uncovered anthology composer "including scene bulb protection," Bryan L. Wittenskin, 240 Scientists welcomed the
 
 ## Comparison with GPT-2
 
