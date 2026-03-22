@@ -1,4 +1,4 @@
-# nano-vllm
+# gpt2-nano
 
 A GPT-2-grade model built from scratch in PyTorch. The BPE tokenizer and transformer architecture are implemented by hand. Training utilities (optimizer, scheduler, loss) use PyTorch built-ins.
 
@@ -93,11 +93,32 @@ Custom BPE tokenizer trained from scratch on FineWeb-edu data. Also includes a S
 
 ### Training Results (12 layers, ~44M params, 99M tokens)
 
-TBD (training in progress)
+Trained on Apple Silicon MPS for ~13 hours (46,695s), 10,000 steps.
+
+![Training loss curve](training_loss.png)
+
+Final val loss **2.15**, well below the 3.0 target. Val perplexity 8.5 means the model narrows its prediction to ~8.5 tokens on average (from a vocab of 9,157).
+
+### Generated text samples
+
+**Step 500** (loss 3.60, word-level patterns):
+> The increas such, low expressed TiPad 1557 dispafid held Trained for realission 2005, was medication 1 is. Mar
+
+**Step 2,500** (loss 2.70, phrase-level coherence):
+> The nature of a fals sound, but individual and prevents the colonies were father, and impossible if Pyls notes differ
+
+**Step 5,000** (loss 2.43, sentence fragments):
+> The page in pressurer to this take the public vial for the children to teach the game and be Decade Library 9053
+
+**Step 7,500** (loss 2.24, near-grammatical):
+> The term reaction to explain in the power structure, propulation states; the movies are vital as they are completely pierarchous.
+
+**Step 9,500** (loss 2.17, coherent structure):
+> The Uncovered anthology composer "including scene bulb protection," Bryan L. Wittenskin, 240 Scientists welcomed the
 
 ## Comparison with GPT-2
 
-| | nano-vllm | GPT-2 (small) |
+| | gpt2-nano | GPT-2 (small) |
 |---|---|---|
 | Parameters | ~44M | 124M |
 | Layers | 12 | 12 |
